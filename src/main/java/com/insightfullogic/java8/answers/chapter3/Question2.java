@@ -15,4 +15,10 @@ public class Question2 {
         
         //return (int) artists.stream().flatMap(artist -> artist.getMembers()).count();
     }
+
+    public static int myCountBandMembersInternal(List<Artist> artists) {
+        return (int) artists.stream()
+                .flatMap(Artist::getMembers)
+                .count();
+    }
 }
