@@ -9,14 +9,23 @@ public class StringExercises {
     // Question 6
     public static int countLowercaseLetters(String string) {
         return (int) string.chars()
-                           .filter(Character::isLowerCase)
-                           .count();
+                .filter(Character::isLowerCase)
+                .count();
     }
 
     // Question 7
     public static Optional<String> mostLowercaseString(List<String> strings) {
         return strings.stream()
-                      .max(Comparator.comparingInt(StringExercises::countLowercaseLetters));
+                .max(Comparator.comparingInt(StringExercises::countLowercaseLetters));
     }
 
+    public static int myCountLowercaseLetters(String string) {
+        return (int) string.chars()
+                .filter(Character::isLowerCase)
+                .count();
+    }
+
+    public static Optional<String> myMostLowercaseString(List<String> strings) {
+        return strings.stream().max(Comparator.comparingInt(StringExercises::myCountLowercaseLetters));
+    }
 }
