@@ -30,4 +30,10 @@ public class Question1 {
                 .flatMap(artist -> Stream.of(artist.getName(), artist.getNationality()))
                 .toList();
     }
+
+    public static List<Album> myGetAlbumsWithAtMostThreeTracks(List<Album> input) {
+        return input.stream()
+                .filter(album -> album.getTrackList().size() <= 3)
+                .toList();
+    }
 }
