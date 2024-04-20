@@ -20,7 +20,7 @@ public class OptimisationExample {
 
     public static void main(String[] ignore) throws IOException, RunnerException {
         final String[] args = {
-                ".*OptimisationExample.*",
+                ".*",
                 "-wi",
                 "10",
                 "-i",
@@ -35,7 +35,7 @@ public class OptimisationExample {
 
     @Setup
     public void init() {
-        linkedListOfNumbers = new LinkedList<>();
+        linkedListOfNumbers = new ArrayList<>();
         addNumbers(linkedListOfNumbers);
 
         // TODO: put any additional setup code here
