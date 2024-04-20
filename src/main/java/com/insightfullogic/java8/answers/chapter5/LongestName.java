@@ -14,9 +14,7 @@ public class LongestName {
 
     public static Artist byReduce(List<Artist> artists) {
         return artists.stream()
-                      .reduce((acc, artist) -> {
-                          return (byNameLength.compare(acc, artist) >= 0) ? acc : artist;
-                      })
+                      .reduce((acc, artist) -> (byNameLength.compare(acc, artist) >= 0) ? acc : artist)
                       .orElseThrow(RuntimeException::new);
     }
 
