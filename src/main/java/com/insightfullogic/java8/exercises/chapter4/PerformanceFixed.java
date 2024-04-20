@@ -15,7 +15,9 @@ public interface PerformanceFixed {
     public Stream<Artist> getMusicians();
 
     public default Stream<Artist> getAllMusicians() {
-        return Exercises.replaceThisWithSolution();
+        return Stream.concat(getMusicians(), getMusicians()
+                .filter(artist -> artist.getMembers().count() > 1)
+                .flatMap(Artist::getMembers));
     }
 
 }
