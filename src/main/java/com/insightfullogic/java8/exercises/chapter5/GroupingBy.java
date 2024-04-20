@@ -19,27 +19,34 @@ public class GroupingBy<T, K> implements Collector<T, Map<K, List<T>>, Map<K, Li
 
     @Override
     public Supplier<Map<K, List<T>>> supplier() {
-        return Exercises.replaceThisWithSolution();
+        return HashMap::new;
     }
 
     @Override
     public BiConsumer<Map<K, List<T>>, T> accumulator() {
-        return Exercises.replaceThisWithSolution();
+        return (map, element) -> {
+            K key = classifier.apply(element);
+            List<T> list = map.computeIfAbsent(key, k -> new ArrayList<>());
+            list.add(element);
+        };
     }
 
     @Override
     public BinaryOperator<Map<K, List<T>>> combiner() {
-        return Exercises.replaceThisWithSolution();
+        return ((kListMap, kListMap2) -> {
+            kListMap.putAll(kListMap2);
+            return kListMap;
+        });
     }
 
     @Override
     public Function<Map<K, List<T>>, Map<K, List<T>>> finisher() {
-        return Exercises.replaceThisWithSolution();
+        return Function.identity();
     }
 
     @Override
     public Set<Characteristics> characteristics() {
-        return Exercises.replaceThisWithSolution();
+        return Set.of(Characteristics.UNORDERED);
     }
 
 }
